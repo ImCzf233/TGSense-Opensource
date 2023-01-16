@@ -407,7 +407,7 @@ public final class NoFall extends Module {
                                     return;
                                 }
 
-                                label530: {
+                                label523: {
                                     if (!this.canNoFall) {
                                         ientityplayersp = MinecraftInstance.mc.getThePlayer();
                                         if (ientityplayersp == null) {
@@ -416,7 +416,7 @@ public final class NoFall extends Module {
 
                                         if ((double) ientityplayersp.getFallDistance() > 3.25D) {
                                             this.canNoFall = true;
-                                            break label530;
+                                            break label523;
                                         }
                                     }
 

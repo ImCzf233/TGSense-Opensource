@@ -49,238 +49,233 @@ public final class HytGetName extends Module {
         Intrinsics.checkParameterIsNotNull(event, "event");
         IPacket $this$unwrap$iv = event.getPacket();
         boolean matcher = false;
+        Packet packet = ((PacketImpl) $this$unwrap$iv).getWrapped();
 
-        if ($this$unwrap$iv == null) {
-            throw new TypeCastException("null cannot be cast to non-null type net.ccbluex.liquidbounce.injection.backend.PacketImpl<*>");
-        } else {
-            Packet packet = ((PacketImpl) $this$unwrap$iv).getWrapped();
+        if (packet instanceof SPacketChat) {
+            String $this$unwrap$iv1 = (String) this.mode.get();
 
-            if (packet instanceof SPacketChat) {
-                String $this$unwrap$iv1 = (String) this.mode.get();
+            matcher = false;
+            if ($this$unwrap$iv1 == null) {
+                throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+            }
 
-                matcher = false;
-                if ($this$unwrap$iv1 == null) {
-                    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+            String s = $this$unwrap$iv1.toLowerCase();
+
+            Intrinsics.checkExpressionValueIsNotNull(s, "(this as java.lang.String).toLowerCase()");
+            $this$unwrap$iv1 = s;
+            Matcher matcher2;
+            final String name;
+            String s1;
+            boolean flag;
+            Matcher matcher1;
+            Pattern pattern;
+            ITextComponent itextcomponent;
+
+            switch ($this$unwrap$iv1.hashCode()) {
+            case -1961702257:
+                if ($this$unwrap$iv1.equals("4v4/1v1")) {
+                    pattern = Pattern.compile("�?死了 (.*?)\\(");
+                    itextcomponent = ((SPacketChat) packet).getChatComponent();
+                    Intrinsics.checkExpressionValueIsNotNull(itextcomponent, "packet.chatComponent");
+                    matcher1 = pattern.matcher((CharSequence) itextcomponent.getUnformattedText());
+                    pattern = Pattern.compile("起床战争>> (.*?) (\\((((.*?)死了!)))");
+                    itextcomponent = ((SPacketChat) packet).getChatComponent();
+                    Intrinsics.checkExpressionValueIsNotNull(itextcomponent, "packet.chatComponent");
+                    matcher2 = pattern.matcher((CharSequence) itextcomponent.getUnformattedText());
+                    if (matcher1.find()) {
+                        s = matcher1.group(1);
+                        Intrinsics.checkExpressionValueIsNotNull(s, "matcher.group(1)");
+                        s1 = s;
+                        flag = false;
+                        if (s1 == null) {
+                            throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
+                        }
+
+                        name = StringsKt.trim((CharSequence) s1).toString();
+                        if (Intrinsics.areEqual(name, "") ^ true) {
+                            LiquidBounce.INSTANCE.getFileManager().friendsConfig.addFriend(name);
+                            ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fAdd HYT Bot:" + name);
+                            (new Thread((Runnable) (new Runnable() {
+                                public final void run() {
+                                    try {
+                                        Thread.sleep(5000L);
+                                        LiquidBounce.INSTANCE.getFileManager().friendsConfig.removeFriend(name);
+                                        ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fDeleted HYT Bot:" + name);
+                                    } catch (InterruptedException interruptedexception) {
+                                        interruptedexception.printStackTrace();
+                                    }
+
+                                }
+                            }))).start();
+                        }
+                    }
+
+                    if (matcher2.find()) {
+                        s = matcher2.group(1);
+                        Intrinsics.checkExpressionValueIsNotNull(s, "matcher2.group(1)");
+                        s1 = s;
+                        flag = false;
+                        if (s1 == null) {
+                            throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
+                        }
+
+                        name = StringsKt.trim((CharSequence) s1).toString();
+                        if (Intrinsics.areEqual(name, "") ^ true) {
+                            LiquidBounce.INSTANCE.getFileManager().friendsConfig.addFriend(name);
+                            ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fAdd HYT Bot:" + name);
+                            (new Thread((Runnable) (new Runnable() {
+                                public final void run() {
+                                    try {
+                                        Thread.sleep(5000L);
+                                        LiquidBounce.INSTANCE.getFileManager().friendsConfig.removeFriend(name);
+                                        ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fDeleted HYT Bot:" + name);
+                                    } catch (InterruptedException interruptedexception) {
+                                        interruptedexception.printStackTrace();
+                                    }
+
+                                }
+                            }))).start();
+                        }
+                    }
                 }
+                break;
 
-                String s = $this$unwrap$iv1.toLowerCase();
-
-                Intrinsics.checkExpressionValueIsNotNull(s, "(this as java.lang.String).toLowerCase()");
-                $this$unwrap$iv1 = s;
-                Matcher matcher2;
-                final String name;
-                String s1;
-                boolean flag;
-                Matcher matcher1;
-                Pattern pattern;
-                ITextComponent itextcomponent;
-
-                switch ($this$unwrap$iv1.hashCode()) {
-                case -1961702257:
-                    if ($this$unwrap$iv1.equals("4v4/1v1")) {
-                        pattern = Pattern.compile("�?死了 (.*?)\\(");
-                        itextcomponent = ((SPacketChat) packet).getChatComponent();
-                        Intrinsics.checkExpressionValueIsNotNull(itextcomponent, "packet.chatComponent");
-                        matcher1 = pattern.matcher((CharSequence) itextcomponent.getUnformattedText());
-                        pattern = Pattern.compile("起床战争>> (.*?) (\\((((.*?)死了!)))");
-                        itextcomponent = ((SPacketChat) packet).getChatComponent();
-                        Intrinsics.checkExpressionValueIsNotNull(itextcomponent, "packet.chatComponent");
-                        matcher2 = pattern.matcher((CharSequence) itextcomponent.getUnformattedText());
-                        if (matcher1.find()) {
-                            s = matcher1.group(1);
-                            Intrinsics.checkExpressionValueIsNotNull(s, "matcher.group(1)");
-                            s1 = s;
-                            flag = false;
-                            if (s1 == null) {
-                                throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
-                            }
-
-                            name = StringsKt.trim((CharSequence) s1).toString();
-                            if (Intrinsics.areEqual(name, "") ^ true) {
-                                LiquidBounce.INSTANCE.getFileManager().friendsConfig.addFriend(name);
-                                ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fAdd HYT Bot:" + name);
-                                (new Thread((Runnable) (new Runnable() {
-                                    public final void run() {
-                                        try {
-                                            Thread.sleep(5000L);
-                                            LiquidBounce.INSTANCE.getFileManager().friendsConfig.removeFriend(name);
-                                            ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fDeleted HYT Bot:" + name);
-                                        } catch (InterruptedException interruptedexception) {
-                                            interruptedexception.printStackTrace();
-                                        }
-
-                                    }
-                                }))).start();
-                            }
+            case 46976214:
+                if ($this$unwrap$iv1.equals("16v16")) {
+                    pattern = Pattern.compile("击败�? (.*?)!");
+                    itextcomponent = ((SPacketChat) packet).getChatComponent();
+                    Intrinsics.checkExpressionValueIsNotNull(itextcomponent, "packet.chatComponent");
+                    matcher1 = pattern.matcher((CharSequence) itextcomponent.getUnformattedText());
+                    pattern = Pattern.compile("玩家 (.*?)死了�?");
+                    itextcomponent = ((SPacketChat) packet).getChatComponent();
+                    Intrinsics.checkExpressionValueIsNotNull(itextcomponent, "packet.chatComponent");
+                    matcher2 = pattern.matcher((CharSequence) itextcomponent.getUnformattedText());
+                    if (matcher1.find()) {
+                        s = matcher1.group(1);
+                        Intrinsics.checkExpressionValueIsNotNull(s, "matcher.group(1)");
+                        s1 = s;
+                        flag = false;
+                        if (s1 == null) {
+                            throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
                         }
 
-                        if (matcher2.find()) {
-                            s = matcher2.group(1);
-                            Intrinsics.checkExpressionValueIsNotNull(s, "matcher2.group(1)");
-                            s1 = s;
-                            flag = false;
-                            if (s1 == null) {
-                                throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
-                            }
-
-                            name = StringsKt.trim((CharSequence) s1).toString();
-                            if (Intrinsics.areEqual(name, "") ^ true) {
-                                LiquidBounce.INSTANCE.getFileManager().friendsConfig.addFriend(name);
-                                ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fAdd HYT Bot:" + name);
-                                (new Thread((Runnable) (new Runnable() {
-                                    public final void run() {
-                                        try {
-                                            Thread.sleep(5000L);
-                                            LiquidBounce.INSTANCE.getFileManager().friendsConfig.removeFriend(name);
-                                            ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fDeleted HYT Bot:" + name);
-                                        } catch (InterruptedException interruptedexception) {
-                                            interruptedexception.printStackTrace();
-                                        }
-
+                        name = StringsKt.trim((CharSequence) s1).toString();
+                        if (Intrinsics.areEqual(name, "") ^ true) {
+                            LiquidBounce.INSTANCE.getFileManager().friendsConfig.addFriend(name);
+                            ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fAdd HYT Bot:" + name);
+                            (new Thread((Runnable) (new Runnable() {
+                                public final void run() {
+                                    try {
+                                        Thread.sleep(10000L);
+                                        LiquidBounce.INSTANCE.getFileManager().friendsConfig.removeFriend(name);
+                                        ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fDeleted HYT Bot:" + name);
+                                    } catch (InterruptedException interruptedexception) {
+                                        interruptedexception.printStackTrace();
                                     }
-                                }))).start();
-                            }
+
+                                }
+                            }))).start();
                         }
                     }
-                    break;
 
-                case 46976214:
-                    if ($this$unwrap$iv1.equals("16v16")) {
-                        pattern = Pattern.compile("击败�? (.*?)!");
-                        itextcomponent = ((SPacketChat) packet).getChatComponent();
-                        Intrinsics.checkExpressionValueIsNotNull(itextcomponent, "packet.chatComponent");
-                        matcher1 = pattern.matcher((CharSequence) itextcomponent.getUnformattedText());
-                        pattern = Pattern.compile("玩家 (.*?)死了�?");
-                        itextcomponent = ((SPacketChat) packet).getChatComponent();
-                        Intrinsics.checkExpressionValueIsNotNull(itextcomponent, "packet.chatComponent");
-                        matcher2 = pattern.matcher((CharSequence) itextcomponent.getUnformattedText());
-                        if (matcher1.find()) {
-                            s = matcher1.group(1);
-                            Intrinsics.checkExpressionValueIsNotNull(s, "matcher.group(1)");
-                            s1 = s;
-                            flag = false;
-                            if (s1 == null) {
-                                throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
-                            }
-
-                            name = StringsKt.trim((CharSequence) s1).toString();
-                            if (Intrinsics.areEqual(name, "") ^ true) {
-                                LiquidBounce.INSTANCE.getFileManager().friendsConfig.addFriend(name);
-                                ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fAdd HYT Bot:" + name);
-                                (new Thread((Runnable) (new Runnable() {
-                                    public final void run() {
-                                        try {
-                                            Thread.sleep(10000L);
-                                            LiquidBounce.INSTANCE.getFileManager().friendsConfig.removeFriend(name);
-                                            ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fDeleted HYT Bot:" + name);
-                                        } catch (InterruptedException interruptedexception) {
-                                            interruptedexception.printStackTrace();
-                                        }
-
-                                    }
-                                }))).start();
-                            }
+                    if (matcher2.find()) {
+                        s = matcher2.group(1);
+                        Intrinsics.checkExpressionValueIsNotNull(s, "matcher2.group(1)");
+                        s1 = s;
+                        flag = false;
+                        if (s1 == null) {
+                            throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
                         }
 
-                        if (matcher2.find()) {
-                            s = matcher2.group(1);
-                            Intrinsics.checkExpressionValueIsNotNull(s, "matcher2.group(1)");
-                            s1 = s;
-                            flag = false;
-                            if (s1 == null) {
-                                throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
-                            }
-
-                            name = StringsKt.trim((CharSequence) s1).toString();
-                            if (Intrinsics.areEqual(name, "") ^ true) {
-                                LiquidBounce.INSTANCE.getFileManager().friendsConfig.addFriend(name);
-                                ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fAdd HYT Bot:" + name);
-                                (new Thread((Runnable) (new Runnable() {
-                                    public final void run() {
-                                        try {
-                                            Thread.sleep(10000L);
-                                            ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fDeleted HYT Bot:" + name);
-                                        } catch (InterruptedException interruptedexception) {
-                                            interruptedexception.printStackTrace();
-                                        }
-
+                        name = StringsKt.trim((CharSequence) s1).toString();
+                        if (Intrinsics.areEqual(name, "") ^ true) {
+                            LiquidBounce.INSTANCE.getFileManager().friendsConfig.addFriend(name);
+                            ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fAdd HYT Bot:" + name);
+                            (new Thread((Runnable) (new Runnable() {
+                                public final void run() {
+                                    try {
+                                        Thread.sleep(10000L);
+                                        ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fDeleted HYT Bot:" + name);
+                                    } catch (InterruptedException interruptedexception) {
+                                        interruptedexception.printStackTrace();
                                     }
-                                }))).start();
-                            }
+
+                                }
+                            }))).start();
                         }
                     }
-                    break;
+                }
+                break;
 
-                case 48636014:
-                    if ($this$unwrap$iv1.equals("32/64")) {
-                        pattern = Pattern.compile("�?死了 (.*?)\\(");
-                        itextcomponent = ((SPacketChat) packet).getChatComponent();
-                        Intrinsics.checkExpressionValueIsNotNull(itextcomponent, "packet.chatComponent");
-                        matcher1 = pattern.matcher((CharSequence) itextcomponent.getUnformattedText());
-                        pattern = Pattern.compile("起床战争>> (.*?) (\\((((.*?)死了!)))");
-                        itextcomponent = ((SPacketChat) packet).getChatComponent();
-                        Intrinsics.checkExpressionValueIsNotNull(itextcomponent, "packet.chatComponent");
-                        matcher2 = pattern.matcher((CharSequence) itextcomponent.getUnformattedText());
-                        if (matcher1.find()) {
-                            s = matcher1.group(1);
-                            Intrinsics.checkExpressionValueIsNotNull(s, "matcher.group(1)");
-                            s1 = s;
-                            flag = false;
-                            if (s1 == null) {
-                                throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
-                            }
-
-                            name = StringsKt.trim((CharSequence) s1).toString();
-                            if (Intrinsics.areEqual(name, "") ^ true) {
-                                LiquidBounce.INSTANCE.getFileManager().friendsConfig.addFriend(name);
-                                ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fAdd HYT Bot:" + name);
-                                (new Thread((Runnable) (new Runnable() {
-                                    public final void run() {
-                                        try {
-                                            Thread.sleep(10000L);
-                                            LiquidBounce.INSTANCE.getFileManager().friendsConfig.removeFriend(name);
-                                            ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fDeleted HYT Bot:" + name);
-                                        } catch (InterruptedException interruptedexception) {
-                                            interruptedexception.printStackTrace();
-                                        }
-
-                                    }
-                                }))).start();
-                            }
+            case 48636014:
+                if ($this$unwrap$iv1.equals("32/64")) {
+                    pattern = Pattern.compile("�?死了 (.*?)\\(");
+                    itextcomponent = ((SPacketChat) packet).getChatComponent();
+                    Intrinsics.checkExpressionValueIsNotNull(itextcomponent, "packet.chatComponent");
+                    matcher1 = pattern.matcher((CharSequence) itextcomponent.getUnformattedText());
+                    pattern = Pattern.compile("起床战争>> (.*?) (\\((((.*?)死了!)))");
+                    itextcomponent = ((SPacketChat) packet).getChatComponent();
+                    Intrinsics.checkExpressionValueIsNotNull(itextcomponent, "packet.chatComponent");
+                    matcher2 = pattern.matcher((CharSequence) itextcomponent.getUnformattedText());
+                    if (matcher1.find()) {
+                        s = matcher1.group(1);
+                        Intrinsics.checkExpressionValueIsNotNull(s, "matcher.group(1)");
+                        s1 = s;
+                        flag = false;
+                        if (s1 == null) {
+                            throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
                         }
 
-                        if (matcher2.find()) {
-                            s = matcher2.group(1);
-                            Intrinsics.checkExpressionValueIsNotNull(s, "matcher2.group(1)");
-                            s1 = s;
-                            flag = false;
-                            if (s1 == null) {
-                                throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
-                            }
-
-                            name = StringsKt.trim((CharSequence) s1).toString();
-                            if (Intrinsics.areEqual(name, "") ^ true) {
-                                LiquidBounce.INSTANCE.getFileManager().friendsConfig.addFriend(name);
-                                ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fAdd HYT Bot:" + name);
-                                (new Thread((Runnable) (new Runnable() {
-                                    public final void run() {
-                                        try {
-                                            Thread.sleep(10000L);
-                                            LiquidBounce.INSTANCE.getFileManager().friendsConfig.removeFriend(name);
-                                            ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fDeleted HYT Bot:" + name);
-                                        } catch (InterruptedException interruptedexception) {
-                                            interruptedexception.printStackTrace();
-                                        }
-
+                        name = StringsKt.trim((CharSequence) s1).toString();
+                        if (Intrinsics.areEqual(name, "") ^ true) {
+                            LiquidBounce.INSTANCE.getFileManager().friendsConfig.addFriend(name);
+                            ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fAdd HYT Bot:" + name);
+                            (new Thread((Runnable) (new Runnable() {
+                                public final void run() {
+                                    try {
+                                        Thread.sleep(10000L);
+                                        LiquidBounce.INSTANCE.getFileManager().friendsConfig.removeFriend(name);
+                                        ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fDeleted HYT Bot:" + name);
+                                    } catch (InterruptedException interruptedexception) {
+                                        interruptedexception.printStackTrace();
                                     }
-                                }))).start();
-                            }
+
+                                }
+                            }))).start();
+                        }
+                    }
+
+                    if (matcher2.find()) {
+                        s = matcher2.group(1);
+                        Intrinsics.checkExpressionValueIsNotNull(s, "matcher2.group(1)");
+                        s1 = s;
+                        flag = false;
+                        if (s1 == null) {
+                            throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
+                        }
+
+                        name = StringsKt.trim((CharSequence) s1).toString();
+                        if (Intrinsics.areEqual(name, "") ^ true) {
+                            LiquidBounce.INSTANCE.getFileManager().friendsConfig.addFriend(name);
+                            ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fAdd HYT Bot:" + name);
+                            (new Thread((Runnable) (new Runnable() {
+                                public final void run() {
+                                    try {
+                                        Thread.sleep(10000L);
+                                        LiquidBounce.INSTANCE.getFileManager().friendsConfig.removeFriend(name);
+                                        ClientUtils.displayChatMessage("§7[§8§6TGSense" + "§7]§fDeleted HYT Bot:" + name);
+                                    } catch (InterruptedException interruptedexception) {
+                                        interruptedexception.printStackTrace();
+                                    }
+
+                                }
+                            }))).start();
                         }
                     }
                 }
             }
-
         }
+
     }
 
     @EventTarget

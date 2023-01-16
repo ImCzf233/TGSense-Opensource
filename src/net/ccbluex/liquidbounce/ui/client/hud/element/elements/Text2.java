@@ -285,7 +285,7 @@ public final class Text2 extends Element {
 
         case 771880589:
             if (str.equals("clientVersion")) {
-                s = "230110".toString();
+                s = "230116".toString();
                 return s;
             }
             break;
@@ -516,7 +516,7 @@ public final class Text2 extends Element {
                     Fonts.font40.drawString(this.getClientName(0, 3), 5.0F, 0.0F, (new Color(255, 255, 255, 220)).getRGB());
                     Fonts.font25.drawString("CN", 5.0F + (float) Fonts.font40.getStringWidth("Pride"), 13.0F, (new Color(255, 255, 255, 220)).getRGB());
                     RenderUtils.drawRect(5.0F, 22.5F, 70.0F, 22.8F, (new Color(200, 200, 200, 220)).getRGB());
-                    Fonts.font25.drawString("230110".toString(), 5.0F, 27.0F, (new Color(255, 255, 255, 220)).getRGB());
+                    Fonts.font25.drawString("230116".toString(), 5.0F, 27.0F, (new Color(255, 255, 255, 220)).getRGB());
                     Fonts.font25.drawString("By Happy & Jiemo", 5.0F, 37.0F, (new Color(255, 255, 255, 220)).getRGB());
                 }
 

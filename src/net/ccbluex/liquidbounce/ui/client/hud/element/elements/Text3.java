@@ -282,7 +282,7 @@ public final class Text3 extends Element {
         switch (str.hashCode()) {
         case -892772691:
             if (str.equals("clientversion")) {
-                s = "230110";
+                s = "230116";
                 return s;
             }
             break;

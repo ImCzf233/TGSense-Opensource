@@ -179,7 +179,7 @@ public final class LBplusMainMenu extends GuiScreen implements GuiYesNoCallback 
         GL11.glPushMatrix();
         this.renderSwitchButton();
         this.renderDarkModeButton();
-        Fonts.font40.drawStringWithShadow("TGSense build 230110 | Liquidbounce.net", 2, this.height - 12, -1);
+        Fonts.font40.drawStringWithShadow("TGSense build 230116 | Liquidbounce.net", 2, this.height - 12, -1);
         Fonts.font40.drawStringWithShadow(creditInfo, this.width - 3 - Fonts.font40.getStringWidth(creditInfo), this.height - 12, -1);
         if (LBplusMainMenu.useParallax) {
             this.moveMouseEffect(mouseX, mouseY, 10.0F);

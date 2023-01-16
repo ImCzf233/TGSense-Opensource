@@ -99,7 +99,7 @@ public final class ClientRichPresence extends MinecraftInstance {
 
         builder.setStartTimestamp(this.timestamp);
         if (this.assets.containsKey("logo")) {
-            builder.setLargeImage((String) this.assets.get("logo"), "MC 1.12.2 - TGSense b230110");
+            builder.setLargeImage((String) this.assets.get("logo"), "MC 1.12.2 - TGSense b230116");
         }
 
         if (MinecraftInstance.mc.getThePlayer() != null) {

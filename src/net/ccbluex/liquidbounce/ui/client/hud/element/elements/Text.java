@@ -413,7 +413,7 @@ public final class Text extends Element {
         switch (str.hashCode()) {
         case -892772691:
             if (str.equals("clientversion")) {
-                s = "b230110";
+                s = "b230116";
                 return s;
             }
             break;
@@ -520,7 +520,7 @@ public final class Text extends Element {
 
         case 771880589:
             if (str.equals("clientVersion")) {
-                s = "230110".toString();
+                s = "230116".toString();
                 return s;
             }
             break;

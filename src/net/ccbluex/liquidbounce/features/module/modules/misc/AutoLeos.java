@@ -38,7 +38,7 @@ public final class AutoLeos extends Module {
 
     private final BoolValue keepArmor = new BoolValue("KeepArmor", false);
     private final BoolValue message = new BoolValue("Message", false);
-    private final TextValue messages = new TextValue("Messages", "TGSense@10-1");
+    private final TextValue messages = new TextValue("Messages", "TGSense@01-15");
     private boolean wating;
     private boolean wating2;
     @NotNull

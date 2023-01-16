@@ -1,7 +1,9 @@
 package net.ccbluex.liquidbounce.features.module.modules.combat;
 
+import java.util.ArrayList;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
+import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import net.ccbluex.liquidbounce.LiquidBounce;
 import net.ccbluex.liquidbounce.api.IClassProvider;
@@ -45,8 +47,8 @@ import org.jetbrains.annotations.NotNull;
     mv = { 1, 1, 16},
     bv = { 1, 0, 3},
     k = 1,
-    d1 = { "\u0000h\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0002\b\u0006\n\u0002\u0010\u000e\n\u0002\b\u0004\n\u0002\u0010\b\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\b\u0007\u0018\u00002\u00020\u0001B\u0005¢\u0006\u0002\u0010\u0002J\b\u0010\"\u001a\u00020#H\u0016J\u0010\u0010$\u001a\u00020#2\u0006\u0010%\u001a\u00020&H\u0007J\u0010\u0010\'\u001a\u00020#2\u0006\u0010%\u001a\u00020(H\u0007J\u0010\u0010)\u001a\u00020#2\u0006\u0010%\u001a\u00020*H\u0007J\u0010\u0010+\u001a\u00020#2\u0006\u0010%\u001a\u00020,H\u0007R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0004X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0007X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\b\u001a\u00020\u0004X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\t\u001a\u00020\u0004X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u000bX\u0082\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\f\u001a\u00020\u000bX\u0082\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\r\u001a\u00020\u0007X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u000e\u001a\u00020\u0007X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u000f\u001a\u00020\u0010X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0011\u001a\u00020\u0007X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0012\u001a\u00020\u0007X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0013\u001a\u00020\u0004X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0014\u001a\u00020\u000bX\u0082\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\u0015\u001a\u00020\u0004X\u0082\u0004¢\u0006\u0002\n\u0000R\u0014\u0010\u0016\u001a\u00020\u00178VX\u0096\u0004¢\u0006\u0006\u001a\u0004\b\u0018\u0010\u0019R\u000e\u0010\u001a\u001a\u00020\u000bX\u0082\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\u001b\u001a\u00020\u001cX\u0082\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\u001d\u001a\u00020\u001eX\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u001f\u001a\u00020 X\u0082\u000e¢\u0006\u0002\n\u0000R\u000e\u0010!\u001a\u00020\u0004X\u0082\u0004¢\u0006\u0002\n\u0000¨\u0006-"},
-    d2 = { "Lnet/ccbluex/liquidbounce/features/module/modules/combat/Velocity;", "Lnet/ccbluex/liquidbounce/features/module/Module;", "()V", "aac4XZReducerValue", "Lnet/ccbluex/liquidbounce/value/FloatValue;", "aacPushXZReducerValue", "aacPushYReducerValue", "Lnet/ccbluex/liquidbounce/value/BoolValue;", "aacv4MotionReducerValue", "horizontalValue", "huayutingjumpflag", "", "jump", "legitFaceValue", "legitStrafeValue", "modeValue", "Lnet/ccbluex/liquidbounce/value/ListValue;", "onlyCombatValue", "onlyGroundValue", "reverse2StrengthValue", "reverseHurt", "reverseStrengthValue", "tag", "", "getTag", "()Ljava/lang/String;", "velocityInput", "velocityTick", "", "velocityTickValue", "Lnet/ccbluex/liquidbounce/value/IntegerValue;", "velocityTimer", "Lnet/ccbluex/liquidbounce/utils/timer/MSTimer;", "verticalValue", "onDisable", "", "onJump", "event", "Lnet/ccbluex/liquidbounce/event/JumpEvent;", "onPacket", "Lnet/ccbluex/liquidbounce/event/PacketEvent;", "onStrafe", "Lnet/ccbluex/liquidbounce/event/StrafeEvent;", "onUpdate", "Lnet/ccbluex/liquidbounce/event/UpdateEvent;", "LiquidBounce"}
+    d1 = { "\u0000z\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\b\n\u0002\u0010\u000e\n\u0002\b\u0004\n\u0002\u0010\b\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\b\u0007\u0018\u00002\u00020\u0001B\u0005¢\u0006\u0002\u0010\u0002J\b\u0010-\u001a\u00020.H\u0016J\u0010\u0010/\u001a\u00020.2\u0006\u00100\u001a\u000201H\u0007J\u0010\u00102\u001a\u00020.2\u0006\u00100\u001a\u000203H\u0007J\u0010\u00104\u001a\u00020.2\u0006\u00100\u001a\u000205H\u0007R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0004X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0007X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\b\u001a\u00020\u0004X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\t\u001a\u00020\u0004X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u000bX\u0082\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\f\u001a\u00020\u000bX\u0082\u000e¢\u0006\u0002\n\u0000R\u001e\u0010\r\u001a\u0012\u0012\u0004\u0012\u00020\u000f0\u000ej\b\u0012\u0004\u0012\u00020\u000f`\u0010X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0011\u001a\u00020\u0007X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0012\u001a\u00020\u0007X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0013\u001a\u00020\u0014X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0015\u001a\u00020\u0016X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0017\u001a\u00020\u0007X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0018\u001a\u00020\u0007X\u0082\u0004¢\u0006\u0002\n\u0000R*\u0010\u0019\u001a\u0012\u0012\u0004\u0012\u00020\u001a0\u000ej\b\u0012\u0004\u0012\u00020\u001a`\u0010X\u0086\u000e¢\u0006\u000e\n\u0000\u001a\u0004\b\u001b\u0010\u001c\"\u0004\b\u001d\u0010\u001eR\u000e\u0010\u001f\u001a\u00020\u0004X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010 \u001a\u00020\u000bX\u0082\u000e¢\u0006\u0002\n\u0000R\u000e\u0010!\u001a\u00020\u0004X\u0082\u0004¢\u0006\u0002\n\u0000R\u0014\u0010\"\u001a\u00020#8VX\u0096\u0004¢\u0006\u0006\u001a\u0004\b$\u0010%R\u000e\u0010&\u001a\u00020\u000bX\u0082\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\'\u001a\u00020(X\u0082\u000e¢\u0006\u0002\n\u0000R\u000e\u0010)\u001a\u00020*X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010+\u001a\u00020\u0016X\u0082\u000e¢\u0006\u0002\n\u0000R\u000e\u0010,\u001a\u00020\u0004X\u0082\u0004¢\u0006\u0002\n\u0000¨\u00066"},
+    d2 = { "Lnet/ccbluex/liquidbounce/features/module/modules/combat/Velocity;", "Lnet/ccbluex/liquidbounce/features/module/Module;", "()V", "aac4XZReducerValue", "Lnet/ccbluex/liquidbounce/value/FloatValue;", "aacPushXZReducerValue", "aacPushYReducerValue", "Lnet/ccbluex/liquidbounce/value/BoolValue;", "aacv4MotionReducerValue", "horizontalValue", "huayutingjumpflag", "", "jump", "keepAlives", "Ljava/util/ArrayList;", "Lnet/minecraft/network/play/client/CPacketKeepAlive;", "Lkotlin/collections/ArrayList;", "legitFaceValue", "legitStrafeValue", "modeValue", "Lnet/ccbluex/liquidbounce/value/ListValue;", "msTimer", "Lnet/ccbluex/liquidbounce/utils/timer/MSTimer;", "onlyCombatValue", "onlyGroundValue", "packets", "Lnet/ccbluex/liquidbounce/api/minecraft/network/IPacket;", "getPackets", "()Ljava/util/ArrayList;", "setPackets", "(Ljava/util/ArrayList;)V", "reverse2StrengthValue", "reverseHurt", "reverseStrengthValue", "tag", "", "getTag", "()Ljava/lang/String;", "velocityInput", "velocityTick", "", "velocityTickValue", "Lnet/ccbluex/liquidbounce/value/IntegerValue;", "velocityTimer", "verticalValue", "onDisable", "", "onPacket", "event", "Lnet/ccbluex/liquidbounce/event/PacketEvent;", "onStrafe", "Lnet/ccbluex/liquidbounce/event/StrafeEvent;", "onUpdate", "Lnet/ccbluex/liquidbounce/event/UpdateEvent;", "LiquidBounce"}
 )
 public final class Velocity extends Module {
 
@@ -68,8 +70,22 @@ public final class Velocity extends Module {
     private boolean velocityInput;
     private int velocityTick;
     private boolean huayutingjumpflag;
+    private final ArrayList keepAlives;
+    private final MSTimer msTimer;
+    @NotNull
+    private ArrayList packets;
     private boolean reverseHurt;
     private boolean jump;
+
+    @NotNull
+    public final ArrayList getPackets() {
+        return this.packets;
+    }
+
+    public final void setPackets(@NotNull ArrayList <set-?>) {
+        Intrinsics.checkParameterIsNotNull(<set-?>, "<set-?>");
+        this.packets = <set-?>;
+    }
 
     @NotNull
     public String getTag() {
@@ -1016,151 +1032,165 @@ public final class Velocity extends Module {
         }
 
         if (!((Boolean) this.onlyCombatValue.get()).booleanValue() || LiquidBounce.INSTANCE.getCombatManager().getInCombat()) {
-            String s = (String) this.modeValue.get();
+            String $fun$onJump$1 = (String) this.modeValue.get();
             boolean rot = false;
 
-            if (s == null) {
+            if ($fun$onJump$1 == null) {
                 throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
             } else {
-                String s1 = s.toLowerCase();
+                String s = $fun$onJump$1.toLowerCase();
 
-                Intrinsics.checkExpressionValueIsNotNull(s1, "(this as java.lang.String).toLowerCase()");
-                s = s1;
-                switch (s.hashCode()) {
+                Intrinsics.checkExpressionValueIsNotNull(s, "(this as java.lang.String).toLowerCase()");
+                $fun$onJump$1 = s;
+                switch ($fun$onJump$1.hashCode()) {
                 case 102851513:
-                    if (s.equals("legit")) {
-                        if (Fucker.INSTANCE.getPos() != null) {
-                            ientityplayersp = MinecraftInstance.mc.getThePlayer();
-                            if (ientityplayersp == null) {
-                                Intrinsics.throwNpe();
-                            }
-
-                            if (ientityplayersp.getHurtTime() > 0) {
-                                WBlockPos wblockpos = Fucker.INSTANCE.getPos();
-
-                                if (wblockpos == null) {
+                    if ($fun$onJump$1.equals("legit")) {
+                        label71: {
+                            if (Fucker.INSTANCE.getPos() != null) {
+                                ientityplayersp = MinecraftInstance.mc.getThePlayer();
+                                if (ientityplayersp == null) {
                                     Intrinsics.throwNpe();
                                 }
 
-                                double d0 = (double) wblockpos.getX();
-                                WBlockPos wblockpos1 = Fucker.INSTANCE.getPos();
+                                if (ientityplayersp.getHurtTime() > 0) {
+                                    WBlockPos wblockpos = Fucker.INSTANCE.getPos();
 
-                                if (wblockpos1 == null) {
-                                    Intrinsics.throwNpe();
-                                }
-
-                                double d1 = (double) wblockpos1.getY();
-                                WBlockPos wblockpos2 = Fucker.INSTANCE.getPos();
-
-                                if (wblockpos2 == null) {
-                                    Intrinsics.throwNpe();
-                                }
-
-                                Rotation rot1 = RotationUtils.getRotations(d0, d1, (double) wblockpos2.getZ());
-
-                                if (((Boolean) this.legitFaceValue.get()).booleanValue()) {
-                                    RotationUtils.setTargetRotation(rot1);
-                                }
-
-                                float yaw = rot1.getYaw();
-                                float strafe;
-
-                                if (((Boolean) this.legitStrafeValue.get()).booleanValue()) {
-                                    strafe = MovementUtils.INSTANCE.getSpeed();
-                                    double forward = Math.toRadians((double) yaw);
-
-                                    ientityplayersp = MinecraftInstance.mc.getThePlayer();
-                                    if (ientityplayersp == null) {
+                                    if (wblockpos == null) {
                                         Intrinsics.throwNpe();
                                     }
 
-                                    ientityplayersp.setMotionX(-Math.sin(forward) * (double) strafe);
-                                    ientityplayersp = MinecraftInstance.mc.getThePlayer();
-                                    if (ientityplayersp == null) {
+                                    double d0 = (double) wblockpos.getX();
+                                    WBlockPos wblockpos1 = Fucker.INSTANCE.getPos();
+
+                                    if (wblockpos1 == null) {
                                         Intrinsics.throwNpe();
                                     }
 
-                                    ientityplayersp.setMotionZ(Math.cos(forward) * (double) strafe);
-                                } else {
-                                    strafe = event.getStrafe();
-                                    float forward1 = event.getForward();
-                                    float friction = event.getFriction();
-                                    float f = strafe * strafe + forward1 * forward1;
+                                    double d1 = (double) wblockpos1.getY();
+                                    WBlockPos wblockpos2 = Fucker.INSTANCE.getPos();
 
-                                    if (f >= 1.0E-4F) {
-                                        f = MathHelper.sqrt(f);
-                                        if (f < 1.0F) {
-                                            f = 1.0F;
-                                        }
+                                    if (wblockpos2 == null) {
+                                        Intrinsics.throwNpe();
+                                    }
 
-                                        f = friction / f;
-                                        strafe *= f;
-                                        forward1 *= f;
-                                        float yawSin = MathHelper.sin((float) ((double) yaw * 3.141592653589793D / (double) 180.0F));
-                                        float yawCos = MathHelper.cos((float) ((double) yaw * 3.141592653589793D / (double) 180.0F));
+                                    Rotation rot1 = RotationUtils.getRotations(d0, d1, (double) wblockpos2.getZ());
+
+                                    if (((Boolean) this.legitFaceValue.get()).booleanValue()) {
+                                        RotationUtils.setTargetRotation(rot1);
+                                    }
+
+                                    float yaw = rot1.getYaw();
+                                    float strafe;
+
+                                    if (((Boolean) this.legitStrafeValue.get()).booleanValue()) {
+                                        strafe = MovementUtils.INSTANCE.getSpeed();
+                                        double forward = Math.toRadians((double) yaw);
 
                                         ientityplayersp = MinecraftInstance.mc.getThePlayer();
                                         if (ientityplayersp == null) {
                                             Intrinsics.throwNpe();
                                         }
 
-                                        ientityplayersp.setMotionX(ientityplayersp.getMotionX() + (double) (strafe * yawCos - forward1 * yawSin));
+                                        ientityplayersp.setMotionX(-Math.sin(forward) * (double) strafe);
                                         ientityplayersp = MinecraftInstance.mc.getThePlayer();
                                         if (ientityplayersp == null) {
                                             Intrinsics.throwNpe();
                                         }
 
-                                        ientityplayersp.setMotionZ(ientityplayersp.getMotionZ() + (double) (forward1 * yawCos + strafe * yawSin));
-                                        return;
-                                    }
-                                }
+                                        ientityplayersp.setMotionZ(Math.cos(forward) * (double) strafe);
+                                    } else {
+                                        strafe = event.getStrafe();
+                                        float forward1 = event.getForward();
+                                        float friction = event.getFriction();
+                                        float f = strafe * strafe + forward1 * forward1;
 
-                                return;
+                                        if (f >= 1.0E-4F) {
+                                            f = MathHelper.sqrt(f);
+                                            if (f < 1.0F) {
+                                                f = 1.0F;
+                                            }
+
+                                            f = friction / f;
+                                            strafe *= f;
+                                            forward1 *= f;
+                                            float yawSin = MathHelper.sin((float) ((double) yaw * 3.141592653589793D / (double) 180.0F));
+                                            float yawCos = MathHelper.cos((float) ((double) yaw * 3.141592653589793D / (double) 180.0F));
+
+                                            ientityplayersp = MinecraftInstance.mc.getThePlayer();
+                                            if (ientityplayersp == null) {
+                                                Intrinsics.throwNpe();
+                                            }
+
+                                            ientityplayersp.setMotionX(ientityplayersp.getMotionX() + (double) (strafe * yawCos - forward1 * yawSin));
+                                            ientityplayersp = MinecraftInstance.mc.getThePlayer();
+                                            if (ientityplayersp == null) {
+                                                Intrinsics.throwNpe();
+                                            }
+
+                                            ientityplayersp.setMotionZ(ientityplayersp.getMotionZ() + (double) (forward1 * yawCos + strafe * yawSin));
+                                        }
+                                    }
+                                    break label71;
+                                }
                             }
+
+                            return;
                         }
-
-                        return;
                     }
 
                 default:
+                    Function1 function1 = new Function1(1) {
+                        @EventTarget
+                        public final void invoke(@NotNull JumpEvent event) {
+                            Intrinsics.checkParameterIsNotNull(event, "event");
+                            IEntityPlayerSP thePlayer = MinecraftInstance.mc.getThePlayer();
+
+                            if (thePlayer != null && !thePlayer.isInWater() && !thePlayer.isInLava() && !thePlayer.isInWeb()) {
+                                String s = (String) Velocity.this.modeValue.get();
+                                boolean flag = false;
+
+                                if (s == null) {
+                                    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+                                } else {
+                                    String s1 = s.toLowerCase();
+
+                                    Intrinsics.checkExpressionValueIsNotNull(s1, "(this as java.lang.String).toLowerCase()");
+                                    s = s1;
+                                    switch (s.hashCode()) {
+                                    case -1234547235:
+                                        if (s.equals("aacpush")) {
+                                            Velocity.this.jump = true;
+                                            if (!thePlayer.isCollidedVertically()) {
+                                                event.cancelEvent();
+                                            }
+                                        }
+                                        break;
+
+                                    case -1234264725:
+                                        if (s.equals("aaczero") && thePlayer.getHurtTime() > 0) {
+                                            event.cancelEvent();
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+                    };
                 }
             }
         }
     }
 
-    @EventTarget
-    public final void onJump(@NotNull JumpEvent event) {
-        Intrinsics.checkParameterIsNotNull(event, "event");
-        IEntityPlayerSP thePlayer = MinecraftInstance.mc.getThePlayer();
+    public Velocity() {
+        boolean flag = false;
+        ArrayList arraylist = new ArrayList();
 
-        if (thePlayer != null && !thePlayer.isInWater() && !thePlayer.isInLava() && !thePlayer.isInWeb()) {
-            String s = (String) this.modeValue.get();
-            boolean flag = false;
+        this.keepAlives = arraylist;
+        this.msTimer = new MSTimer();
+        this.packets = new ArrayList();
+    }
 
-            if (s == null) {
-                throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
-            } else {
-                String s1 = s.toLowerCase();
-
-                Intrinsics.checkExpressionValueIsNotNull(s1, "(this as java.lang.String).toLowerCase()");
-                s = s1;
-                switch (s.hashCode()) {
-                case -1234547235:
-                    if (s.equals("aacpush")) {
-                        this.jump = true;
-                        if (!thePlayer.isCollidedVertically()) {
-                            event.cancelEvent();
-                        }
-                    }
-                    break;
-
-                case -1234264725:
-                    if (s.equals("aaczero") && thePlayer.getHurtTime() > 0) {
-                        event.cancelEvent();
-                    }
-                }
-
-            }
-        }
+    public static final boolean access$getJump$p(Velocity $this) {
+        return $this.jump;
     }
 }

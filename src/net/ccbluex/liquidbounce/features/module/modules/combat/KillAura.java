@@ -106,7 +106,7 @@ import org.lwjgl.util.glu.Cylinder;
 
 @ModuleInfo(
     name = "KillAura",
-    description = "Automatically attacks targets around you.",
+    description = "起床�?�?",
     category = ModuleCategory.COMBAT,
     keyBind = 19
 )
@@ -2599,10 +2599,38 @@ public final class KillAura extends Module {
         mv = { 1, 1, 16},
         bv = { 1, 0, 3},
         k = 1,
-        d1 = { "\u0000\u0014\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0010\b\n\u0002\b\u0006\b\u0086\u0003\u0018\u00002\u00020\u0001B\u0007\b\u0002¢\u0006\u0002\u0010\u0002R$\u0010\u0003\u001a\u00020\u00048\u0006@\u0006X\u0087\u000e¢\u0006\u0014\n\u0000\u0012\u0004\b\u0005\u0010\u0002\u001a\u0004\b\u0006\u0010\u0007\"\u0004\b\b\u0010\t¨\u0006\n"},
-        d2 = { "Lnet/ccbluex/liquidbounce/features/module/modules/combat/KillAura$Companion;", "", "()V", "killCounts", "", "killCounts$annotations", "getKillCounts", "()I", "setKillCounts", "(I)V", "LiquidBounce"}
+        d1 = { "\u0000\"\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0010\b\n\u0002\b\u0006\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0006\n\u0002\b\u0003\b\u0086\u0003\u0018\u00002\u00020\u0001B\u0007\b\u0002¢\u0006\u0002\u0010\u0002J\u001e\u0010\n\u001a\u00020\u000b2\u0006\u0010\f\u001a\u00020\r2\u0006\u0010\u000e\u001a\u00020\r2\u0006\u0010\u000f\u001a\u00020\rR$\u0010\u0003\u001a\u00020\u00048\u0006@\u0006X\u0087\u000e¢\u0006\u0014\n\u0000\u0012\u0004\b\u0005\u0010\u0002\u001a\u0004\b\u0006\u0010\u0007\"\u0004\b\b\u0010\t¨\u0006\u0010"},
+        d2 = { "Lnet/ccbluex/liquidbounce/features/module/modules/combat/KillAura$Companion;", "", "()V", "killCounts", "", "killCounts$annotations", "getKillCounts", "()I", "setKillCounts", "(I)V", "addVelocity", "", "x", "", "y", "z", "LiquidBounce"}
     )
     public static final class Companion {
+
+        public final void addVelocity(double x, double y, double z) {
+            IEntityPlayerSP ientityplayersp = MinecraftInstance.mc.getThePlayer();
+
+            if (ientityplayersp == null) {
+                Intrinsics.throwNpe();
+            }
+
+            ientityplayersp.setMotionX(ientityplayersp.getMotionX() + x);
+            ientityplayersp = MinecraftInstance.mc.getThePlayer();
+            if (ientityplayersp == null) {
+                Intrinsics.throwNpe();
+            }
+
+            ientityplayersp.setMotionY(ientityplayersp.getMotionY() + y);
+            ientityplayersp = MinecraftInstance.mc.getThePlayer();
+            if (ientityplayersp == null) {
+                Intrinsics.throwNpe();
+            }
+
+            ientityplayersp.setMotionZ(ientityplayersp.getMotionZ() + z);
+            ientityplayersp = MinecraftInstance.mc.getThePlayer();
+            if (ientityplayersp == null) {
+                Intrinsics.throwNpe();
+            }
+
+            ientityplayersp.setAirBorne(true);
+        }
 
         /** @deprecated */
         @JvmStatic

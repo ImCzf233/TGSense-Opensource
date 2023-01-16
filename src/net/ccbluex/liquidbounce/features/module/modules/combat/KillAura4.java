@@ -88,7 +88,7 @@ import org.lwjgl.util.glu.Cylinder;
 
 @ModuleInfo(
     name = "KillAura4",
-    description = "Automatically attacks targets around you.",
+    description = "å¤©å‘æ?æˆ®è½¬å¤´é?‰new.",
     category = ModuleCategory.COMBAT
 )
 @Metadata(

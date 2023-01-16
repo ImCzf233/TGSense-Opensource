@@ -336,7 +336,7 @@ public final class HUD extends Module {
 
         if (((Boolean) this.Info.get()).booleanValue()) {
             String stringZ1 = "";
-            String Vis = "230110";
+            String Vis = "230116";
             String name11 = "Ver 100223";
 
             GlStateManager.resetColor();

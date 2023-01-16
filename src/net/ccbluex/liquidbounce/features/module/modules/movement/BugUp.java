@@ -390,7 +390,7 @@ public class BugUp extends Module {
                         WBlockPos packet1 = fallingplayer.findCollision(60);
 
                         if (this.canBlink) {
-                            label427: {
+                            label434: {
                                 if (packet1 != null) {
                                     ientityplayersp = MinecraftInstance.mc.getThePlayer();
                                     if (ientityplayersp == null) {
@@ -398,7 +398,7 @@ public class BugUp extends Module {
                                     }
 
                                     if (ientityplayersp.getPosY() - (double) packet1.getY() <= ((Number) this.startFallDistValue.get()).doubleValue()) {
-                                        break label427;
+                                        break label434;
                                     }
                                 }
 

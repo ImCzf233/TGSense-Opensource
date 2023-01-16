@@ -35,6 +35,6 @@ public final class AutoReconnect {
 
         INSTANCE = autoreconnect;
         AutoReconnect.isEnabled = true;
-        AutoReconnect.delay = 5000;
+        AutoReconnect.delay = 15000;
     }
 }

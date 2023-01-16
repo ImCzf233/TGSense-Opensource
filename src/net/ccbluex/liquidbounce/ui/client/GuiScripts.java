@@ -18,7 +18,7 @@ import kotlin.collections.ArraysKt;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.text.StringsKt;
-import me.Skid.ui.Client.JelloMainMenu;
+import me.Skid.ui.Client.LBplusMainMenu;
 import net.ccbluex.liquidbounce.LiquidBounce;
 import net.ccbluex.liquidbounce.api.minecraft.client.IMinecraft;
 import net.ccbluex.liquidbounce.api.minecraft.client.gui.IFontRenderer;
@@ -90,7 +90,7 @@ public final class GuiScripts extends WrappedGuiScreen {
         Intrinsics.checkParameterIsNotNull(button, "button");
         switch (button.getId()) {
         case 0:
-            MinecraftInstance.mc2.displayGuiScreen((GuiScreen) (new JelloMainMenu()));
+            MinecraftInstance.mc2.displayGuiScreen((GuiScreen) (new LBplusMainMenu()));
             break;
 
         case 1:
@@ -232,7 +232,7 @@ public final class GuiScripts extends WrappedGuiScreen {
 
     public void keyTyped(char typedChar, int keyCode) {
         if (1 == keyCode) {
-            MinecraftInstance.mc2.displayGuiScreen((GuiScreen) (new JelloMainMenu()));
+            MinecraftInstance.mc2.displayGuiScreen((GuiScreen) (new LBplusMainMenu()));
         } else {
             super.keyTyped(typedChar, keyCode);
         }

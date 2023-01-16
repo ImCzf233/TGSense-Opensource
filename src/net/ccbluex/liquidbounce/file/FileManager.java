@@ -28,6 +28,7 @@ public class FileManager extends MinecraftInstance {
     public final File fontsDir;
     public final File settingsDir;
     public final File soundsDir;
+    public final File musicDir;
     public final FileConfig modulesConfig;
     public final FileConfig valuesConfig;
     public final FileConfig clickGuiConfig;
@@ -45,6 +46,7 @@ public class FileManager extends MinecraftInstance {
         this.fontsDir = new File(this.dir, "fonts");
         this.settingsDir = new File(this.dir, "settings");
         this.soundsDir = new File(this.dir, "sounds");
+        this.musicDir = new File(this.dir, "music");
         this.modulesConfig = new ModulesConfig(new File(this.dir, "modules.json"));
         this.valuesConfig = new ValuesConfig(new File(this.dir, "values.json"));
         this.clickGuiConfig = new ClickGuiConfig(new File(this.dir, "clickgui.json"));
@@ -77,6 +79,10 @@ public class FileManager extends MinecraftInstance {
             this.settingsDir.mkdir();
         }
 
+    }
+
+    public File getMusicDir() {
+        return this.musicDir;
     }
 
     public void loadAllConfigs() {

@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Map.Entry;
 import javax.swing.JOptionPane;
-import me.Skid.ui.Client.JelloMainMenu;
+import me.Skid.ui.Client.LBplusMainMenu;
 import net.ccbluex.liquidbounce.LiquidBounce;
 import net.ccbluex.liquidbounce.api.minecraft.client.gui.IGuiButton;
 import net.ccbluex.liquidbounce.api.minecraft.client.gui.IGuiScreen;
@@ -169,7 +169,7 @@ public class GuiAltManager extends WrappedGuiScreen {
         if (button.getEnabled()) {
             switch (button.getId()) {
             case 0:
-                GuiAltManager.mc2.displayGuiScreen(new JelloMainMenu());
+                GuiAltManager.mc2.displayGuiScreen(new LBplusMainMenu());
                 break;
 
             case 1:
@@ -338,7 +338,7 @@ public class GuiAltManager extends WrappedGuiScreen {
 
         switch (keyCode) {
         case 1:
-            GuiAltManager.mc2.displayGuiScreen(new JelloMainMenu());
+            GuiAltManager.mc2.displayGuiScreen(new LBplusMainMenu());
             return;
 
         case 28:

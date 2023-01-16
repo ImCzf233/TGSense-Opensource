@@ -1,9 +1,11 @@
 package net.ccbluex.liquidbounce.features.module.modules.misc;
 
+import java.awt.Component;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
 import kotlin.jvm.functions.Function0;
@@ -65,124 +67,120 @@ public final class AutoPlay extends Module {
         Intrinsics.checkParameterIsNotNull(event, "event");
         IPacket text = event.getPacket();
         boolean $i$f$unwrap = false;
+        Packet packet = ((PacketImpl) text).getWrapped();
+        String text1 = (String) this.modeValue.get();
 
-        if (text == null) {
-            throw new TypeCastException("null cannot be cast to non-null type net.ccbluex.liquidbounce.injection.backend.PacketImpl<*>");
+        $i$f$unwrap = false;
+        if (text1 == null) {
+            throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
         } else {
-            Packet packet = ((PacketImpl) text).getWrapped();
-            String text1 = (String) this.modeValue.get();
+            String s = text1.toLowerCase();
 
-            $i$f$unwrap = false;
-            if (text1 == null) {
-                throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
-            } else {
-                String s = text1.toLowerCase();
+            Intrinsics.checkExpressionValueIsNotNull(s, "(this as java.lang.String).toLowerCase()");
+            text1 = s;
+            switch (text1.hashCode()) {
+            case 1083223725:
+                if (text1.equals("redesky")) {
+                    if (this.clicking && (packet instanceof CPacketClickWindow || packet instanceof CPacketPlayerDigging)) {
+                        event.cancelEvent();
+                        return;
+                    }
 
+                    if (this.clickState == 2 && packet instanceof SPacketOpenWindow) {
+                        event.cancelEvent();
+                    }
+                }
+                break;
+
+            case 1381910549:
+                if (text1.equals("hypixel") && this.clickState == 1 && packet instanceof SPacketOpenWindow) {
+                    event.cancelEvent();
+                }
+            }
+
+            if (packet instanceof SPacketChat) {
+                ITextComponent itextcomponent = ((SPacketChat) packet).getChatComponent();
+
+                Intrinsics.checkExpressionValueIsNotNull(itextcomponent, "packet.chatComponent");
+                text1 = itextcomponent.getUnformattedText();
+                String $i$f$unwrap1 = (String) this.modeValue.get();
+                boolean matcher = false;
+
+                if ($i$f$unwrap1 == null) {
+                    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+                }
+
+                s = $i$f$unwrap1.toLowerCase();
                 Intrinsics.checkExpressionValueIsNotNull(s, "(this as java.lang.String).toLowerCase()");
-                text1 = s;
-                switch (text1.hashCode()) {
-                case 1083223725:
-                    if (text1.equals("redesky")) {
-                        if (this.clicking && (packet instanceof CPacketClickWindow || packet instanceof CPacketPlayerDigging)) {
-                            event.cancelEvent();
-                            return;
-                        }
+                $i$f$unwrap1 = s;
+                IEntityPlayerSP ientityplayersp;
 
-                        if (this.clickState == 2 && packet instanceof SPacketOpenWindow) {
-                            event.cancelEvent();
+                switch ($i$f$unwrap1.hashCode()) {
+                case -1362756060:
+                    if ($i$f$unwrap1.equals("minemora")) {
+                        Intrinsics.checkExpressionValueIsNotNull(text1, "text");
+                        if (StringsKt.contains((CharSequence) text1, (CharSequence) "Has click en alguna de las siguientes opciones", true)) {
+                            this.queueAutoPlay((Function0) null.INSTANCE);
                         }
                     }
                     break;
 
-                case 1381910549:
-                    if (text1.equals("hypixel") && this.clickState == 1 && packet instanceof SPacketOpenWindow) {
-                        event.cancelEvent();
+                case 1660682403:
+                    if ($i$f$unwrap1.equals("huayuting16")) {
+                        Intrinsics.checkExpressionValueIsNotNull(text1, "text");
+                        if (StringsKt.contains((CharSequence) text1, (CharSequence) "[起床战争] Game 结束！感谢您的参与！", true)) {
+                            JOptionPane.showMessageDialog((Component) null, "AutoPlay", "恭喜您使用TGSense获胜", 1);
+                            ientityplayersp = MinecraftInstance.mc.getThePlayer();
+                            if (ientityplayersp == null) {
+                                Intrinsics.throwNpe();
+                            }
+
+                            ientityplayersp.sendChatMessage("@[TGSense]GG");
+                            (new MiscUtils()).playSound(MiscUtils.SoundType.VICTORY, -8.0F);
+                        }
                     }
-                }
+                    break;
 
-                if (packet instanceof SPacketChat) {
-                    ITextComponent itextcomponent = ((SPacketChat) packet).getChatComponent();
+                case 1660684126:
+                    if ($i$f$unwrap1.equals("huayutinggg")) {
+                        Intrinsics.checkExpressionValueIsNotNull(text1, "text");
+                        if (StringsKt.contains((CharSequence) text1, (CharSequence) "      喜欢      �?�?      不喜�?", true)) {
+                            JOptionPane.showMessageDialog((Component) null, "AutoPlay", "恭喜您使用TGSense获胜", 1);
+                            LiquidBounce.INSTANCE.getHud().addNotification(new Notification("AutoPlay", "Game Over", NotifyType.INFO, 0, 0, 24, (DefaultConstructorMarker) null));
+                            ientityplayersp = MinecraftInstance.mc.getThePlayer();
+                            if (ientityplayersp == null) {
+                                Intrinsics.throwNpe();
+                            }
 
-                    Intrinsics.checkExpressionValueIsNotNull(itextcomponent, "packet.chatComponent");
-                    text1 = itextcomponent.getUnformattedText();
-                    String $i$f$unwrap1 = (String) this.modeValue.get();
-                    boolean matcher = false;
-
-                    if ($i$f$unwrap1 == null) {
-                        throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+                            ientityplayersp.sendChatMessage("@[TGSense]GG");
+                            (new MiscUtils()).playSound(MiscUtils.SoundType.VICTORY, -8.0F);
+                        }
                     }
+                    break;
 
-                    s = $i$f$unwrap1.toLowerCase();
-                    Intrinsics.checkExpressionValueIsNotNull(s, "(this as java.lang.String).toLowerCase()");
-                    $i$f$unwrap1 = s;
-                    IEntityPlayerSP ientityplayersp;
+                case 1660684514:
+                    if ($i$f$unwrap1.equals("huayutingsw")) {
+                        Pattern pattern = Pattern.compile("你在地图 (.*?)\\(");
+                        ITextComponent itextcomponent1 = ((SPacketChat) packet).getChatComponent();
 
-                    switch ($i$f$unwrap1.hashCode()) {
-                    case -1362756060:
-                        if ($i$f$unwrap1.equals("minemora")) {
-                            Intrinsics.checkExpressionValueIsNotNull(text1, "text");
-                            if (StringsKt.contains((CharSequence) text1, (CharSequence) "Has click en alguna de las siguientes opciones", true)) {
-                                this.queueAutoPlay((Function0) null.INSTANCE);
+                        Intrinsics.checkExpressionValueIsNotNull(itextcomponent1, "packet.chatComponent");
+                        Matcher matcher1 = pattern.matcher((CharSequence) itextcomponent1.getUnformattedText());
+
+                        Intrinsics.checkExpressionValueIsNotNull(text1, "text");
+                        if (StringsKt.contains((CharSequence) text1, (CharSequence) "你现在是观察者状�?. 按E打开菜单.", true)) {
+                            JOptionPane.showMessageDialog((Component) null, "AutoPlay", "恭喜您使用TGSense获胜", 1);
+                            ientityplayersp = MinecraftInstance.mc.getThePlayer();
+                            if (ientityplayersp == null) {
+                                Intrinsics.throwNpe();
                             }
-                        }
-                        break;
 
-                    case 1660682403:
-                        if ($i$f$unwrap1.equals("huayuting16")) {
-                            Intrinsics.checkExpressionValueIsNotNull(text1, "text");
-                            if (StringsKt.contains((CharSequence) text1, (CharSequence) "[起床战争] Game 结束！感谢您的参与！", true)) {
-                                LiquidBounce.INSTANCE.getHud().addNotification(new Notification("AutoPlay", "Game Over", NotifyType.INFO, 0, 0, 24, (DefaultConstructorMarker) null));
-                                ientityplayersp = MinecraftInstance.mc.getThePlayer();
-                                if (ientityplayersp == null) {
-                                    Intrinsics.throwNpe();
-                                }
-
-                                ientityplayersp.sendChatMessage("@[TGSense]GG");
-                                (new MiscUtils()).playSound(MiscUtils.SoundType.VICTORY, -8.0F);
-                            }
-                        }
-                        break;
-
-                    case 1660684126:
-                        if ($i$f$unwrap1.equals("huayutinggg")) {
-                            Intrinsics.checkExpressionValueIsNotNull(text1, "text");
-                            if (StringsKt.contains((CharSequence) text1, (CharSequence) "      喜欢      �?�?      不喜�?", true)) {
-                                LiquidBounce.INSTANCE.getHud().addNotification(new Notification("AutoPlay", "Game Over", NotifyType.INFO, 0, 0, 24, (DefaultConstructorMarker) null));
-                                ientityplayersp = MinecraftInstance.mc.getThePlayer();
-                                if (ientityplayersp == null) {
-                                    Intrinsics.throwNpe();
-                                }
-
-                                ientityplayersp.sendChatMessage("@[TGSense]GG");
-                                (new MiscUtils()).playSound(MiscUtils.SoundType.VICTORY, -8.0F);
-                            }
-                        }
-                        break;
-
-                    case 1660684514:
-                        if ($i$f$unwrap1.equals("huayutingsw")) {
-                            Pattern pattern = Pattern.compile("你在地图 (.*?)\\(");
-                            ITextComponent itextcomponent1 = ((SPacketChat) packet).getChatComponent();
-
-                            Intrinsics.checkExpressionValueIsNotNull(itextcomponent1, "packet.chatComponent");
-                            Matcher matcher1 = pattern.matcher((CharSequence) itextcomponent1.getUnformattedText());
-
-                            Intrinsics.checkExpressionValueIsNotNull(text1, "text");
-                            if (StringsKt.contains((CharSequence) text1, (CharSequence) "你现在是观察者状�?. 按E打开菜单.", true)) {
-                                LiquidBounce.INSTANCE.getHud().addNotification(new Notification("AutoPlay", "Game Over", NotifyType.INFO, 0, 0, 24, (DefaultConstructorMarker) null));
-                                ientityplayersp = MinecraftInstance.mc.getThePlayer();
-                                if (ientityplayersp == null) {
-                                    Intrinsics.throwNpe();
-                                }
-
-                                ientityplayersp.sendChatMessage("@[TGSense]GG");
-                                (new MiscUtils()).playSound(MiscUtils.SoundType.VICTORY, -8.0F);
-                            }
+                            ientityplayersp.sendChatMessage("@[TGSense]GG");
+                            (new MiscUtils()).playSound(MiscUtils.SoundType.VICTORY, -8.0F);
                         }
                     }
                 }
-
             }
+
         }
     }
 
